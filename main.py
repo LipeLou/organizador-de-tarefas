@@ -158,7 +158,7 @@ class ListaTarefas:
 
     def gerar_estatisticas(self):
         tarefas_totais = self.tarefas.shape[0]
-        tarefas_concluidas = self.tarefas.loc[self.tarefas['status'] == 'Concluída']
+        tarefas_concluidas = self.tarefas.loc[self.tarefas['status'] == 'Concluída'].copy()
         numero_tarefas_concluidas = tarefas_concluidas.shape[0]
         tarefas_pendentes = tarefas_totais - numero_tarefas_concluidas
         progresso = numero_tarefas_concluidas/tarefas_totais * 100
