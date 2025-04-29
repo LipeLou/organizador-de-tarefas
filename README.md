@@ -25,7 +25,7 @@ Foram implementadas duas funções para visualizar as tarefas em gráficos: uma 
 
 **🔧 Funçoes adicionas:**
 plot_tarfeas()
-```
+~~~python
 def plot_tarefas(self, by_status=True):
     coluna = 'status' if by_status else 'prioridade'
     dados = self.tarefas.groupby(coluna)['nome'].count()
@@ -48,9 +48,9 @@ def plot_tarefas(self, by_status=True):
     ax.set_title(f'Distribuição de Tarefas por {coluna.capitalize()}', fontsize=14)
     plt.savefig(f'tarefas-por-{coluna}.png')
     return plt.show()
-```
+~~~
 plot_progress()
-```
+~~~python
 def plot_progress(self):
     total = self.tarefas.shape[0]
     concluidas = self.tarefas[self.tarefas['status'] == 'Concluída'].shape[0]
@@ -73,4 +73,4 @@ def plot_progress(self):
     ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.savefig('progresso.png')
     return plt.show()
-'''
+~~~
