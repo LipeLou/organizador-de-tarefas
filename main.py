@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 import pandas as pd
 import os
+from matplotlib import pyplot as plt
+import seaborn as sns
 
 
 class Tarefa:
@@ -179,6 +181,52 @@ class ListaTarefas:
         print(f'Tempo total gasto: {round(tempo_total,2)} horas')
         print("===================")
 
+    def plot_tarefas(self, by_status=True):
+        coluna = 'status' if by_status else 'prioridade'
+        dados = self.tarefas.groupby(coluna)['nome'].count()
+
+        fig, ax = plt.subplots(figsize=(7, 7))
+        wedges, texts, autotexts = ax.pie(
+            dados,
+            labels=dados.index,
+            autopct='%1.1f%%',
+            explode=[0.01] * len(dados),
+            colors=['#FF9800','#4CAF50','#2196F3'],
+        )
+
+        for text in texts:
+            text.set_fontsize(10)
+        for autotext in autotexts:
+            autotext.set_color('white')
+            autotext.set_fontsize(10)
+
+        ax.set_title(f'Distribuição de Tarefas por {coluna.capitalize()}', fontsize=14)
+        plt.savefig(f'tarefas-por-{coluna}.png')
+        return plt.show()
+
+    def plot_progress(self):
+        total = self.tarefas.shape[0]
+        concluidas = self.tarefas[self.tarefas['status'] == 'Concluída'].shape[0]
+        p_concluidas = (concluidas / total) * 100
+        p_nao_concluidas = 100 - p_concluidas
+
+        fig, ax = plt.subplots(figsize=(8, 2))
+
+        ax.barh([''], [p_concluidas], color='g', label=f'Concluído ({p_concluidas:.1f}%)')
+        ax.barh([''], [p_nao_concluidas], left=[p_concluidas], color='0.95', label=f'Não Concluído ({p_nao_concluidas:.1f}%)')
+
+        ax.set_xlim(0, 100)
+        ax.set_title('Progresso Geral das Tarefas', fontsize=13)
+        ax.set_xlabel('Porcentagem')
+        ax.get_yaxis().set_visible(False)
+
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+        plt.savefig('progresso.png')
+        return plt.show()
+
 
 def voltar_ao_menu():
     input('\nDigite algo para voltar ao menu. ')
@@ -200,8 +248,10 @@ def menu():
     print("7. Editar Tarefa")
     print("8. Selecionar tarefa mais urgente")
     print("9. Exibir estatísticas")
-    print("10. Sair")
-
+    print("10. Exbir gráfico Tarefas por Prioridade")
+    print("11. Exbir gráfico Tarefas por Status")
+    print("12. Exbir gráfico Progresso")
+    print("13. Sair")
     escolher_opcao()
 
 def escolher_opcao():
@@ -293,6 +343,18 @@ def escolher_opcao():
             voltar_ao_menu()
 
         case "10":
+            lista_tarefas.plot_tarefas(by_status=False)
+            voltar_ao_menu()
+
+        case "11":
+            lista_tarefas.plot_tarefas(by_status=True)
+            voltar_ao_menu()
+
+        case "12":
+            lista_tarefas.plot_progress()
+            voltar_ao_menu()
+
+        case "13":
             lista_tarefas.salvar_tarefas()
             limpar_terminal()
             print("=== Volte Sempre ===")
