@@ -6,13 +6,14 @@ Organizador de tarefas em **Python** com prioridade e status. Projeto simples vo
 ### ❓ Por que um organizador de tarefas?
 Simples, é um projeto básico e muito bom para aplicar diversos tipos de conhecimentos, ou seja, escalavel, seja em OOP, como também em Data Science.
 
-# Atualizações
+
+
+# 📌 Atualizações  
 Como dito anteriormente, o objetivo é colocar em prática meus conhecimentos. Assim, fortalecendo meu conhecimento e melhorando meus estudos.  
 Então essa parte de **Atulizações**, será onde colocarei em ordem as novas funções adicionadas ao projeto.
 
-## 📌 Atualizações  
 
-### 1. Matplotlib
+## 1. Matplotlib
 
 **🆕 Função adicionada:** Visualização gráfica de tarefas  
 **🧠 Conhecimentos aplicados:**  
