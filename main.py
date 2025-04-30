@@ -2,8 +2,6 @@ from datetime import datetime, timedelta
 import pandas as pd
 import os
 from matplotlib import pyplot as plt
-import seaborn as sns
-
 
 class Tarefa:
     def __init__(self, nome, prioridade, prazo):
@@ -228,6 +226,7 @@ class ListaTarefas:
         return plt.show()
 
 
+
 def voltar_ao_menu():
     input('\nDigite algo para voltar ao menu. ')
     limpar_terminal()
@@ -235,24 +234,6 @@ def voltar_ao_menu():
 
 def limpar_terminal():
     os.system('cls')
-
-
-def menu():
-    print("\n=== Organizador de Tarefas com Prioridades ===")
-    print("1. Adicionar Tarefa")
-    print("2. Exibir Tarefas por Prioridade")
-    print("3. Exibir Tarefas por Status")
-    print("4. Iniciar Tarefa")
-    print("5. Finalizar Tarefa")
-    print("6. Remover Tarefa")
-    print("7. Editar Tarefa")
-    print("8. Selecionar tarefa mais urgente")
-    print("9. Exibir estatísticas")
-    print("10. Exbir gráfico Tarefas por Prioridade")
-    print("11. Exbir gráfico Tarefas por Status")
-    print("12. Exbir gráfico Progresso")
-    print("13. Sair")
-    escolher_opcao()
 
 def escolher_opcao():
     lista_tarefas = ListaTarefas()
@@ -377,6 +358,25 @@ def escolher_opcao():
         case "":
             print("Opção inválida. Tente novamente.")
             escolher_opcao()
+
+def menu():
+    print("\n=== Organizador de Tarefas com Prioridades ===")
+    print("1. Adicionar Tarefa")
+    print("2. Exibir Tarefas por Prioridade")
+    print("3. Exibir Tarefas por Status")
+    print("4. Iniciar Tarefa")
+    print("5. Finalizar Tarefa")
+    print("6. Remover Tarefa")
+    print("7. Editar Tarefa")
+    print("8. Selecionar tarefa mais urgente")
+    print("9. Exibir estatísticas")
+    print("10. Exbir gráfico Tarefas por Prioridade")
+    print("11. Exbir gráfico Tarefas por Status")
+    print("12. Exbir gráfico Progresso")
+    print("13. Sair")
+    escolher_opcao()
+
+
 
 
 if __name__ == '__main__':
