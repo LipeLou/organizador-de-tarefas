@@ -1,17 +1,2 @@
-,nome,prioridade,prazo,status,data_criacao,horario_inicio,tempo_total,peso_prioridade,peso_status,peso_urgencia
-0,Estudar cálculo A,Alta,2024-04-25,Não iniciada,2025-04-24 16:17:40,,,1.0,2.0,3.0
-1,Fazer trabalho,Média,2024-05-01,Não iniciada,2025-04-24 16:18:25,,,2.0,2.0,4.0
-2,Ir ao mercado,Baixa,2024-04-30,Em andamento,2025-04-24 10:05:12,2025-04-24 11:00:00,00:45:00,3.0,1.0,4.0
-3,Revisar código,Alta,2024-04-26,Não iniciada,2025-04-24 14:20:15,,,1.0,2.0,3.0
-4,Enviar e-mail para professor,Média,2024-04-27,Concluída,2025-04-23 09:30:00,2025-04-23 09:35:00,00:05:00,2.0,3.0,5.0
-5,Limpar a casa,Baixa,2024-05-02,Não iniciada,2025-04-24 13:00:00,,,3.0,2.0,5.0
-6,Marcar consulta médica,Média,2024-04-29,Em andamento,2025-04-24 08:50:00,2025-04-24 09:00:00,00:10:00,2.0,1.0,3.0
-7,Praticar exercício físico,Alta,2024-04-25,Não iniciada,2025-04-24 15:10:00,,,1.0,2.0,3.0
-8,Atualizar currículo,Média,2024-05-03,Não iniciada,2025-04-24 16:00:00,,,2.0,2.0,4.0
-9,Planejar viagem,Baixa,2024-05-05,Em andamento,2025-04-24 12:30:00,2025-04-24 13:00:00,00:30:00,3.0,1.0,4.0
-10,Fazer backup do sistema,Alta,2024-04-24,Concluída,2025-04-22 10:00:00,2025-04-22 10:15:00,00:30:00,1.0,3.0,4.0
-11,Organizar arquivos pessoais,Média,2024-04-23,Concluída,2025-04-22 13:00:00,2025-04-22 13:15:00,01:30:00,2.0,3.0,5.0
-12,Montar móvel,Baixa,2024-04-20,Concluída,2025-04-21 08:00:00,2025-04-21 08:10:00,04:05:00,3.0,3.0,6.0
-13,Assistir curso online,Alta,2024-04-22,Concluída,2025-04-20 14:00:00,2025-04-20 14:15:00,04:00:00,1.0,3.0,4.0
-14,Preparar apresentação,Média,2024-04-24,Concluída,2025-04-23 16:00:00,2025-04-23 16:10:00,02:00:00,2.0,3.0,5.0
-15,Estudar biblioteca matplotlib,Baixa,2024-04-30 00:00:00,Em andamento,2025-04-28 21:12:56,2025-04-28 21:13:51.433058,,3.0,1.0,4.0
+,nome,prioridade,prazo,status,data_criacao,horario_inicio,tempo_total
+
