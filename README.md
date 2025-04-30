@@ -1,16 +1,17 @@
 # Organizador de Tarefas
 
 ### ✅ Descrição breve do projeto
-Organizador de tarefas em **Python** com prioridade e status. Projeto simples voltado para fins didáticos, com o objetivo de aplicar conhecimentos que vou adquirindo. O projeto começa com apenas um programa utilizando conceitos fundamentais da programação orientada a objetos e manipulação de dados. 
+Organizador de tarefas em **Python** com prioridade e status. Projeto simples voltado para fins didáticos, com o objetivo de aplicar conhecimentos que vou adquirindo. O projeto começa com apenas um programa utilizando conceitos fundamentais da programação orientada a objetos e manipulação de dados, porém tentarei cada vez mais tornar esse projeto "complexo", seja corrigindo erros, assim como trazendo novas funções.
+A cada funcionalidade (conhecimentos) nova adicionada, informarei em formato de notas de atualização (patch notes). Entretanto, as modificações para corrigir possíveis erros ou melhora de design, apenas irei comenta-las nos commits. 
 
 ### ❓ Por que um organizador de tarefas?
-Simples, é um projeto básico e muito bom para aplicar diversos tipos de conhecimentos, ou seja, escalavel, seja em OOP, como também em Data Science.
+Simples, é um projeto básico e muito bom para aplicar diversos tipos de conhecimentos, ou seja, escalável, seja em OOP, como também em Data Science.
 
 
 
 # 📌 Atualizações  
 Como dito anteriormente, o objetivo é colocar em prática meus conhecimentos. Assim, fortalecendo meu conhecimento e melhorando meus estudos.  
-Então essa parte de **Atulizações**, será onde colocarei em ordem as novas funções adicionadas ao projeto.
+Então essa parte de **Atualizações**, será onde colocarei em ordem as novas funções adicionadas ao projeto.
 
 
 ## 1. Matplotlib
