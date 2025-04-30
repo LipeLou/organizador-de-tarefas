@@ -26,6 +26,7 @@ Então essa parte de **Atualizações**, será onde colocarei em ordem as novas 
 Foram implementadas duas funções para visualizar as tarefas em gráficos: uma exibe a distribuição por status ou prioridade em gráfico de pizza, e a outra mostra o progresso geral em gráfico de barra horizontal. Isso facilita a análise visual do andamento e da organização das tarefas.
 
 **🔧 Funçoes adicionas:**
+
 plot_tarfeas()
 ~~~python
 def plot_tarefas(self, by_status=True):
