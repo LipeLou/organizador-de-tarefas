@@ -134,6 +134,9 @@ class ListaTarefas:
             self.tarefas = self.tarefas.loc[self.tarefas['nome'] != nome_tarefa]
             print(f"Tarefa '{nome_tarefa}' removida.")
 
+        self.tarefas.reset_index(drop=True, inplace=True)
+        self.salvar_tarefas()
+
     def selecionar_tarefa_mais_urgente(self):
         self.tarefas.loc[self.tarefas['prioridade'] == 'Alta', 'peso_prioridade'] = 3
         self.tarefas.loc[self.tarefas['prioridade'] == 'Média', 'peso_prioridade'] = 2
