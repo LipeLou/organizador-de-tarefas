@@ -135,26 +135,29 @@ class ListaTarefas:
             print(f"Tarefa '{nome_tarefa}' removida.")
 
     def selecionar_tarefa_mais_urgente(self):
-        self.tarefas.loc[self.tarefas['prioridade'] == 'Alta', 'peso_prioridade'] = 1
+        self.tarefas.loc[self.tarefas['prioridade'] == 'Alta', 'peso_prioridade'] = 3
         self.tarefas.loc[self.tarefas['prioridade'] == 'Média', 'peso_prioridade'] = 2
-        self.tarefas.loc[self.tarefas['prioridade'] == 'Baixa', 'peso_prioridade'] = 3
+        self.tarefas.loc[self.tarefas['prioridade'] == 'Baixa', 'peso_prioridade'] = 1
 
-        self.tarefas.loc[self.tarefas['status'] == 'Em andamento', 'peso_status'] = 1
-        self.tarefas.loc[self.tarefas['status'] == 'Não iniciada', 'peso_status'] = 2
-        self.tarefas.loc[self.tarefas['status'] == 'Concluída', 'peso_status'] = 3
+        self.tarefas.loc[self.tarefas['status'] == 'Em andamento', 'peso_status'] = 2
+        self.tarefas.loc[self.tarefas['status'] == 'Não iniciada', 'peso_status'] = 3
+        self.tarefas.loc[self.tarefas['status'] == 'Concluída', 'peso_status'] = 1
 
         self.tarefas['peso_urgencia'] = self.tarefas['peso_prioridade'] + self.tarefas['peso_status'] 
 
-        menor_peso = self.tarefas['peso_urgencia'].min()
-        tarefas_urgentes = self.tarefas.loc[self.tarefas['peso_urgencia']==menor_peso]
+        maior_peso = self.tarefas['peso_urgencia'].max()
+        tarefas_urgentes = self.tarefas.loc[self.tarefas['peso_urgencia']==maior_peso]
 
-        tarefas_urgentes.sort_values(by= 'prazo', ascending=False)
+        tarefas_urgentes = tarefas_urgentes.sort_values(by= 'prazo', ascending=True)
+        print(tarefas_urgentes)
         print("=== Tarefa urgente! ===")
         print(f'Tarefa: {tarefas_urgentes.iloc[0]['nome']}') 
         print(f'Prioridade: {tarefas_urgentes.iloc[0]['prioridade']}')
         print(f'Prazo: {tarefas_urgentes.iloc[0]['prazo']}')
         print(f'Status: {tarefas_urgentes.iloc[0]['status']}')
         print("===================")
+
+        self.salvar_tarefas()
 
     def gerar_estatisticas(self):
         tarefas_totais = self.tarefas.shape[0]
@@ -237,129 +240,137 @@ def limpar_terminal():
 
 def escolher_opcao():
     lista_tarefas = ListaTarefas()
-    opcao = input("Escolha uma opção: ")
-    limpar_terminal()
-    match opcao:
-        case "1":
-            nome = input("Digite o nome da tarefa: ")
-            prioridade = input("Digite a prioridade (Alta, Média, Baixa): ").lower().capitalize()
-            while prioridade not in ['Alta', 'Média', 'Baixa']:
-                print('Tente novamente.')
+    try: 
+        opcao = int(input("Escolha uma opção: "))
+
+        limpar_terminal()
+        match opcao:
+            case 1:
+                nome = input("Digite o nome da tarefa: ")
                 prioridade = input("Digite a prioridade (Alta, Média, Baixa): ").lower().capitalize()
-            prazo = input("Digite o prazo (ex: 2023-12-31): ")
-            prazo = datetime.strptime(prazo, "%Y-%m-%d")
-            tarefa = Tarefa(nome, prioridade, prazo)
-            confirm = input(f'Adicionar tarefa: {tarefa} | ?\n[S/N]: ').upper()[0]
+                while prioridade not in ['Alta', 'Média', 'Baixa']:
+                    print('Tente novamente.')
+                    prioridade = input("Digite a prioridade (Alta, Média, Baixa): ").lower().capitalize()
+                prazo = input("Digite o prazo (ex: 2023-12-31): ")
+                prazo = datetime.strptime(prazo, "%Y-%m-%d")
+                tarefa = Tarefa(nome, prioridade, prazo)
+                confirm = input(f'Adicionar tarefa: {tarefa} | ?\n[S/N]: ').upper()[0]
 
-            if confirm == 'S':
-                lista_tarefas.adicionar_tarefa(tarefa)
-                print(f"Tarefa '{nome}' adicionada com sucesso!")
+                if confirm == 'S':
+                    lista_tarefas.adicionar_tarefa(tarefa)
+                    print(f"Tarefa '{nome}' adicionada com sucesso!")
+                    lista_tarefas.salvar_tarefas()
+
+                elif confirm == 'N':
+                    print(f"Tarefa '{nome}' não foi adicionada.")
+                voltar_ao_menu()
+
+            case 2:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.exibir_tarefas_por_prioridade()
+                voltar_ao_menu()
+
+            case 3:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.exibir_tarefas_por_status()
+                voltar_ao_menu()
+
+            case 4:
+                if not lista_tarefas.tarefas.empty:
+                    for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
+                        print(f'{numero}. {tarefa}')
+                    n = int(input("Digite número da tarefa que deseja iniciar: "))
+                    if n <= len(lista_tarefas.tarefas):
+                        lista_tarefas.iniciar_tarefa(lista_tarefas.tarefas['nome'][n])
+                        lista_tarefas.salvar_tarefas()
+                    else:
+                        print("Tarefa não encontrada.")
+                else:
+                    print('Nenhuma tarefa cadastrada.')
+                voltar_ao_menu()
+
+            case 5:
+                if not lista_tarefas.tarefas.empty:
+                    for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
+                        print(f'{numero}. {tarefa}')
+                    n = int(input("Digite número da tarefa que deseja finalizar: "))
+                    if n <= len(lista_tarefas.tarefas):
+                        lista_tarefas.finalizar_tarefa(lista_tarefas.tarefas['nome'][n])
+                        lista_tarefas.salvar_tarefas()
+                    else:
+                        print("Tarefa não encontrada.")
+                else:
+                    print('Nenhuma tarefa cadastrada.')
+                voltar_ao_menu()
+
+            case 6:
+                if not lista_tarefas.tarefas.empty:
+                    for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
+                        print(f'{numero}. {tarefa}')
+                    n = int(input("Digite número da tarefa que deseja remover: "))
+                    if n <= len(lista_tarefas.tarefas):
+
+                        lista_tarefas.remover_tarefa(lista_tarefas.tarefas['nome'][n])
+                        lista_tarefas.salvar_tarefas()
+                    else:
+                        print("Tarefa não encontrada.")
+                else:
+                    print('Nenhuma tarefa cadastrada.')
+                voltar_ao_menu()
+
+            case 7:
+                if not lista_tarefas.tarefas.empty:
+                    for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
+                        print(f'{numero+1}. {tarefa}')
+                    n = int(input("Digite número da tarefa que deseja editar: "))
+                    if n <= len(lista_tarefas.tarefas):       
+                        print(f'Editando tarefa: {lista_tarefas.tarefas['nome'][n]}')
+                        novo_nome = input("Novo nome: ")
+                        nova_prioridade = input("Nova prioridade (Alta, Média, Baixa): ")
+                        novo_prazo = input("Novo prazo (ex: 2023-12-31): ")
+                        novo_prazo = datetime.strptime(novo_prazo, "%Y-%m-%d") if novo_prazo else None
+                        lista_tarefas.editar_tarefa(lista_tarefas.tarefas['nome'][n], novo_nome, nova_prioridade, novo_prazo)
+                        lista_tarefas.salvar_tarefas()
+                    else:
+                        print("Tarefa não encontrada.")
+                else:
+                    print('Nenhuma tarefa cadastrada.')
+                voltar_ao_menu()
+
+            case 8:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.selecionar_tarefa_mais_urgente()
+                voltar_ao_menu()
+
+            case 9:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.gerar_estatisticas()
+                voltar_ao_menu()
+
+            case 10:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_tarefas(by_status=False)
+                voltar_ao_menu()
+
+            case 11:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_tarefas(by_status=True)
+                voltar_ao_menu()
+
+            case 12:
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_progress()
+                voltar_ao_menu()
+
+            case 13:
                 lista_tarefas.salvar_tarefas()
+                limpar_terminal()
+                print("=== Volte Sempre ===")
 
-            elif confirm == 'N':
-                print(f"Tarefa '{nome}' não foi adicionada.")
-            voltar_ao_menu()
+            case _:
+                print("Opção inválida. Tente novamente.")
+                menu()
 
-        case "2":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.exibir_tarefas_por_prioridade()
-            voltar_ao_menu()
+    except:
+        print("Opção inválida. Tente novamente.")
+        menu()
 
-        case "3":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.exibir_tarefas_por_status()
-            voltar_ao_menu()
-
-        case "4":
-            if not lista_tarefas.tarefas.empty:
-                for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
-                    print(f'{numero}. {tarefa}')
-                n = int(input("Digite número da tarefa que deseja iniciar: "))
-                if n <= len(lista_tarefas.tarefas):
-                    lista_tarefas.iniciar_tarefa(lista_tarefas.tarefas['nome'][n])
-                    lista_tarefas.salvar_tarefas()
-                else:
-                    print("Tarefa não encontrada.")
-            else:
-                print('Nenhuma tarefa cadastrada.')
-            voltar_ao_menu()
-
-        case "5":
-            if not lista_tarefas.tarefas.empty:
-                for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
-                    print(f'{numero}. {tarefa}')
-                n = int(input("Digite número da tarefa que deseja finalizar: "))
-                if n <= len(lista_tarefas.tarefas):
-                    lista_tarefas.finalizar_tarefa(lista_tarefas.tarefas['nome'][n])
-                    lista_tarefas.salvar_tarefas()
-                else:
-                    print("Tarefa não encontrada.")
-            else:
-                print('Nenhuma tarefa cadastrada.')
-            voltar_ao_menu()
-
-        case "6":
-            if not lista_tarefas.tarefas.empty:
-                for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
-                    print(f'{numero}. {tarefa}')
-                n = int(input("Digite número da tarefa que deseja remover: "))
-                if n <= len(lista_tarefas.tarefas):
-
-                    lista_tarefas.remover_tarefa(lista_tarefas.tarefas['nome'][n])
-                    lista_tarefas.salvar_tarefas()
-                else:
-                    print("Tarefa não encontrada.")
-            else:
-                print('Nenhuma tarefa cadastrada.')
-            voltar_ao_menu()
-
-        case "7":
-            if not lista_tarefas.tarefas.empty:
-                for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
-                    print(f'{numero+1}. {tarefa}')
-                n = int(input("Digite número da tarefa que deseja editar: "))
-                if n <= len(lista_tarefas.tarefas):       
-                    print(f'Editando tarefa: {lista_tarefas.tarefas['nome'][n]}')
-                    novo_nome = input("Novo nome: ")
-                    nova_prioridade = input("Nova prioridade (Alta, Média, Baixa): ")
-                    novo_prazo = input("Novo prazo (ex: 2023-12-31): ")
-                    novo_prazo = datetime.strptime(novo_prazo, "%Y-%m-%d") if novo_prazo else None
-                    lista_tarefas.editar_tarefa(lista_tarefas.tarefas['nome'][n], novo_nome, nova_prioridade, novo_prazo)
-                    lista_tarefas.salvar_tarefas()
-                else:
-                    print("Tarefa não encontrada.")
-            else:
-                print('Nenhuma tarefa cadastrada.')
-            voltar_ao_menu()
-
-        case "8":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.selecionar_tarefa_mais_urgente()
-            voltar_ao_menu()
-
-        case "9":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.gerar_estatisticas()
-            voltar_ao_menu()
-
-        case "10":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_tarefas(by_status=False)
-            voltar_ao_menu()
-
-        case "11":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_tarefas(by_status=True)
-            voltar_ao_menu()
-
-        case "12":
-            print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_progress()
-            voltar_ao_menu()
-
-        case "13":
-            lista_tarefas.salvar_tarefas()
-            limpar_terminal()
-            print("=== Volte Sempre ===")
-
-        case "":
-            print("Opção inválida. Tente novamente.")
-            escolher_opcao()
 
 def menu():
+    limpar_terminal()
     print("\n=== Organizador de Tarefas com Prioridades ===")
     print("1. Adicionar Tarefa")
     print("2. Exibir Tarefas por Prioridade")
