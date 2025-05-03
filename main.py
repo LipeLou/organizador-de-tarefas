@@ -179,7 +179,7 @@ class ListaTarefas:
         print(f'Tarefas Totais: {tarefas_totais}')
         print(f'Tarefas Concluídas: {tarefas_concluidas}')
         print(f'Tarefas Pendentes: {tarefas_pendentes}')
-        print(f'Progresso: {progresso}%')
+        print(f'Progresso: {round(progresso,2)}%')
         print(f'Tempo médio por trefa: {round(tempo_medio,2)} horas')
         print(f'Tempo total gasto: {round(tempo_total,2)} horas')
         print("===================")
