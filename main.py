@@ -152,7 +152,6 @@ class ListaTarefas:
         tarefas_urgentes = self.tarefas.loc[self.tarefas['peso_urgencia']==maior_peso]
 
         tarefas_urgentes = tarefas_urgentes.sort_values(by= 'prazo', ascending=True)
-        print(tarefas_urgentes)
         print("=== Tarefa urgente! ===")
         print(f'Tarefa: {tarefas_urgentes.iloc[0]['nome']}') 
         print(f'Prioridade: {tarefas_urgentes.iloc[0]['prioridade']}')
