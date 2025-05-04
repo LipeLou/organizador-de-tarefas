@@ -14,7 +14,7 @@ Como dito anteriormente, o objetivo é colocar em prática meus conhecimentos. A
 Então essa parte de **Atualizações**, será onde colocarei em ordem as novas funções adicionadas ao projeto.
 
 
-## 1. Matplotlib
+## 1. 📊 Gráficos 
 
 **🆕 Função adicionada:** Visualização gráfica de tarefas  
 **🧠 Conhecimentos aplicados:**  
@@ -77,3 +77,7 @@ def plot_progress(self):
     plt.savefig('progresso.png')
     return plt.show()
 ~~~
+
+## 📩 Envio de ralatórios por email
+
+**🚧 Em andamento... 🚧**
