@@ -249,12 +249,29 @@ def escolher_opcao():
         match opcao:
             case 1:
                 nome = input("Digite o nome da tarefa: ")
+                while not nome:
+                    limpar_terminal()
+                    print('Erro! Tente novamente')
+                    nome = input("Digite o nome da tarefa: ")
+        
                 prioridade = input("Digite a prioridade (Alta, Média, Baixa): ").lower().capitalize()
                 while prioridade not in ['Alta', 'Média', 'Baixa']:
-                    print('Tente novamente.')
+                    limpar_terminal()
+                    print('Erro! Tente novamente.')
+                    print(f'Nome: {nome}')
                     prioridade = input("Digite a prioridade (Alta, Média, Baixa): ").lower().capitalize()
-                prazo = input("Digite o prazo (ex: 2023-12-31): ")
-                prazo = datetime.strptime(prazo, "%Y-%m-%d")
+
+                while True:
+                    try:
+                        prazo = input("Digite o prazo (ex: 2025-12-31): ")
+                        prazo = datetime.strptime(prazo, "%Y-%m-%d")
+                        break
+                    except ValueError:
+                        limpar_terminal()
+                        print("Formato de data inválido. Tente novamente.")
+                        print(f"Nome: {nome}")
+                        print(f"Prioridade: {prioridade}")
+                    
                 tarefa = Tarefa(nome, prioridade, prazo)
                 confirm = input(f'Adicionar tarefa: {tarefa} | ?\n[S/N]: ').upper()[0]
 
@@ -262,7 +279,6 @@ def escolher_opcao():
                     lista_tarefas.adicionar_tarefa(tarefa)
                     print(f"Tarefa '{nome}' adicionada com sucesso!")
                     lista_tarefas.salvar_tarefas()
-
                 elif confirm == 'N':
                     print(f"Tarefa '{nome}' não foi adicionada.")
                 voltar_ao_menu()
@@ -366,8 +382,8 @@ def escolher_opcao():
                 print("Opção inválida. Tente novamente.")
                 menu()
 
-    except:
-        print("Opção inválida. Tente novamente.")
+    except ValueError:
+        print("Entrada inválida. Por favor, insira um número inteiro correspondente à opção do menu.")
         menu()
 
 
