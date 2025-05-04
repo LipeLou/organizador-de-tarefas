@@ -296,7 +296,7 @@ def escolher_opcao():
                     for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
                         print(f'{numero}. {tarefa}')
                     n = int(input("Digite número da tarefa que deseja iniciar: "))
-                    if n <= len(lista_tarefas.tarefas):
+                    if 0 <= n < len(lista_tarefas.tarefas):
                         lista_tarefas.iniciar_tarefa(lista_tarefas.tarefas['nome'][n])
                         lista_tarefas.salvar_tarefas()
                     else:
@@ -310,7 +310,7 @@ def escolher_opcao():
                     for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
                         print(f'{numero}. {tarefa}')
                     n = int(input("Digite número da tarefa que deseja finalizar: "))
-                    if n <= len(lista_tarefas.tarefas):
+                    if 0 <= n < len(lista_tarefas.tarefas):
                         lista_tarefas.finalizar_tarefa(lista_tarefas.tarefas['nome'][n])
                         lista_tarefas.salvar_tarefas()
                     else:
@@ -324,7 +324,7 @@ def escolher_opcao():
                     for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
                         print(f'{numero}. {tarefa}')
                     n = int(input("Digite número da tarefa que deseja remover: "))
-                    if n <= len(lista_tarefas.tarefas):
+                    if 0 <= n < len(lista_tarefas.tarefas):
 
                         lista_tarefas.remover_tarefa(lista_tarefas.tarefas['nome'][n])
                         lista_tarefas.salvar_tarefas()
@@ -339,7 +339,7 @@ def escolher_opcao():
                     for numero, tarefa in enumerate(lista_tarefas.tarefas['nome']):
                         print(f'{numero+1}. {tarefa}')
                     n = int(input("Digite número da tarefa que deseja editar: "))
-                    if n <= len(lista_tarefas.tarefas):       
+                    if 0 <= n < len(lista_tarefas.tarefas):       
                         print(f'Editando tarefa: {lista_tarefas.tarefas['nome'][n]}')
                         novo_nome = input("Novo nome: ")
                         nova_prioridade = input("Nova prioridade (Alta, Média, Baixa): ")
