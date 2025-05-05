@@ -263,8 +263,8 @@ class ListaTarefas:
                 smtp.send_message(msg)
 
             print('Email enviado com sucesso!')
-        except:
-            print('Erro! Tente novamente.')
+        except Exception as e:
+            print('Erro ao enviar email:', e)
 
 
 def voltar_ao_menu():
