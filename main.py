@@ -255,7 +255,7 @@ class ListaTarefas:
 
             texto = f'''
 Olá, seu relatório de tarefas cehgou!\n
-Seu progresso neste projeto é de {round(progresso, 2)}%.\n
+Seu progresso neste projeto é de {round(progresso, 1)}%.\n
 O número total de tarefas é: {tarefas_totais}.\n
 Destas, {tarefas_concluidas} foram concluídas e {tarefas_pendentes} estão pendentes.\n
 O tempo médio em cada tarefa é {round(tempo_medio, 2)} horas e o tempo total executando as tarefas é de {round(tempo_total, 2)} horas.\n
@@ -269,7 +269,7 @@ Seguem anexos os gráficos de estatísticas.
                         <h2 style="color: #2c3e50;">Relatório de Tarefas</h2>
                         <p style="font-size: 16px;">Olá, seu relatório de tarefas chegou!</p>
                         <p style="font-size: 16px; line-height: 1.6;">
-                            Seu progresso neste projeto é de <strong>{round(progresso, 2)}%</strong>.<br>
+                            Seu progresso neste projeto é de <strong>{round(progresso, 1)}%</strong>.<br>
                             O número total de tarefas é: <strong>{tarefas_totais}</strong>.<br>
                             Destas, <strong>{tarefas_concluidas}</strong> foram concluídas e <strong>{tarefas_pendentes}</strong> estão pendentes.<br>
                             O tempo médio em cada tarefa é <strong>{round(tempo_medio, 2)} horas</strong> e o tempo total executando as tarefas é de <strong>{round(tempo_total, 2)} horas</strong>.
