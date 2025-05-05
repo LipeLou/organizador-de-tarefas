@@ -78,7 +78,8 @@ def plot_progress(self):
     return plt.show()
 ~~~
 
-## 📩 Relatórios
+
+## 2. 📩 Relatórios
 
 **🆕 Função adicionada:** Envio de relatórios por e-mail  
 **🧠 Conhecimentos aplicados:**  
