@@ -78,6 +78,21 @@ def plot_progress(self):
     return plt.show()
 ~~~
 
-## 📩 Envio de ralatórios por email
+## 📩 Relatórios
 
-**🚧 Em andamento... 🚧**
+**🆕 Função adicionada:** Envio de relatórios por e-mail  
+**🧠 Conhecimentos aplicados:**  
+- Envio de e-mails com `smtplib` e `email.message`  
+- Leitura de variáveis de ambiente com `dotenv`  
+- Manipulação de arquivos binários para anexos  
+
+**🔍 Descrição breve:**  
+Foi implementada uma função que permite o envio de arquivos de relatório por e-mail de forma automatizada e segura. Essa funcionalidade melhora a praticidade do projeto ao facilitar o compartilhamento dos resultados e gráficos gerados.
+
+**🔧 Funçoes adicionas:**
+
+enviar_relatorio_por_email()
+~~~
+Código
+~~~
+
