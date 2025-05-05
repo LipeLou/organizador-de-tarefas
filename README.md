@@ -23,7 +23,8 @@ Então essa parte de **Atualizações**, será onde colocarei em ordem as novas 
 - Salvamento de imagens com `plt.savefig()`  
 
 **🔍 Descrição breve:**  
-Foram implementadas duas funções para visualizar as tarefas em gráficos: uma exibe a distribuição por status ou prioridade em gráfico de pizza, e a outra mostra o progresso geral em gráfico de barra horizontal. Isso facilita a análise visual do andamento e da organização das tarefas.
+Foram implementadas duas funções para visualizar as tarefas em gráficos: uma exibe a distribuição por status ou prioridade em gráfico de pizza, e a outra mostra o progresso geral em gráfico de barra horizontal. 
+Isso facilita a análise visual do andamento e da organização das tarefas.
 
 **🔧 Funçoes adicionas:**
 
@@ -78,6 +79,23 @@ def plot_progress(self):
     return plt.show()
 ~~~
 
-## 📩 Envio de ralatórios por email
 
-**🚧 Em andamento... 🚧**
+## 2. 📩 Relatórios
+
+**🆕 Função adicionada:** Envio de relatórios por e-mail  
+**🧠 Conhecimentos aplicados:**  
+- Envio de e-mails com `smtplib` e `email.message`  
+- Leitura de variáveis de ambiente com `dotenv`  
+- Manipulação de arquivos binários para anexos  
+
+**🔍 Descrição breve:**  
+Foi implementada uma função que permite o envio de arquivos de relatório por e-mail de forma automatizada e segura. 
+Essa funcionalidade melhora a praticidade do projeto ao facilitar o compartilhamento dos resultados e gráficos gerados.
+
+**🔧 Funçoes adicionas:**
+
+enviar_relatorio_por_email()
+~~~
+Código
+~~~
+
