@@ -96,6 +96,71 @@ Essa funcionalidade melhora a praticidade do projeto ao facilitar o compartilham
 
 enviar_relatorio_por_email()
 ~~~
-Código
+    def enviar_relatorio_por_email(self, destinatario=None):
+        try: 
+            load_dotenv()
+            tarefas_totais, tarefas_concluidas, tarefas_pendentes,progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
+
+            texto = f'''
+Olá, seu relatório de tarefas cehgou!\n
+Seu progresso neste projeto é de {round(progresso, 1)}%.\n
+O número total de tarefas é: {tarefas_totais}.\n
+Destas, {tarefas_concluidas} foram concluídas e {tarefas_pendentes} estão pendentes.\n
+O tempo médio em cada tarefa é {round(tempo_medio, 2)} horas e o tempo total executando as tarefas é de {round(tempo_total, 2)} horas.\n
+Seguem anexos os gráficos de estatísticas.
+'''
+
+            texto_html = f'''
+                    <html>
+                    <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333333; padding: 20px;">
+                        <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 8px; padding: 20px;">
+                        <h2 style="color: #2c3e50;">Relatório de Tarefas</h2>
+                        <p style="font-size: 16px;">Olá, seu relatório de tarefas chegou!</p>
+                        <p style="font-size: 16px; line-height: 1.6;">
+                            Seu progresso neste projeto é de <strong>{round(progresso, 1)}%</strong>.<br>
+                            O número total de tarefas é: <strong>{tarefas_totais}</strong>.<br>
+                            Destas, <strong>{tarefas_concluidas}</strong> foram concluídas e <strong>{tarefas_pendentes}</strong> estão pendentes.<br>
+                            O tempo médio em cada tarefa é <strong>{round(tempo_medio, 2)} horas</strong> e o tempo total executando as tarefas é de <strong>{round(tempo_total, 2)} horas</strong>.
+                        </p>
+                        <p style="font-size: 16px;">Seguem anexos os gráficos de estatísticas.</p>
+                        </div>
+                    </body>
+                    </html>
+                    '''
+
+            host = 'imap.gmail.com'
+            usuario = os.getenv('EMAIL_USUARIO')
+            senha = os.getenv('EMAIL_SENHA')
+
+            msg = EmailMessage()
+            msg['Subject'] = 'Relatório tarefas'
+            msg['From'] = usuario
+            msg['To'] = destinatario if destinatario else usuario
+                
+            msg.set_content(texto)
+            msg.add_alternative(texto_html, subtype='html')
+
+            self.plot_tarefas()
+            self.plot_tarefas(by_status=False)
+            self.plot_progress()
+
+            arquivos = [
+                os.path.join('img', 'tarefas-por-prioridade.png'),
+                os.path.join('img', 'tarefas-por-status.png'),
+                os.path.join('img', 'progresso.png')
+            ]
+            for arquivo in arquivos:
+                with open(arquivo, 'rb') as a:
+                    img = a.read()
+                    arquivo_nome = a.name
+                    msg.add_attachment(img, maintype='image', subtype='png', filename=arquivo_nome)
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(usuario, senha)
+                smtp.send_message(msg)
+
+            print(f'Email enviado com sucesso para {destinatario}') if destinatario else print('Email enviado com sucesso!')
+        except Exception as e:
+            print('Erro ao enviar email:', e)
 ~~~
 
