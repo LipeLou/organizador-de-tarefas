@@ -179,14 +179,18 @@ class ListaTarefas:
             tempo_medio = tarefas_concluidas['duracao_horas'].mean()
             tempo_total = tarefas_concluidas['duracao_horas'].sum()
 
+        return tarefas_totais, numero_tarefas_concluidas, tarefas_pendentes, progresso, tempo_medio, tempo_total
+
+    def exibir_estatisticas(self):
+        tarefas_totais, numero_tarefas_concluidas, tarefas_pendentes, progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
         print('======Estatísticas=======')
         print(f'Tarefas Totais: {tarefas_totais}')
-        print(f'Tarefas Concluídas: {tarefas_concluidas}')
+        print(f'Tarefas Concluídas: {numero_tarefas_concluidas}')
         print(f'Tarefas Pendentes: {tarefas_pendentes}')
         print(f'Progresso: {round(progresso,2)}%')
-        print(f'Tempo médio por trefa: {round(tempo_medio,2)} horas')
+        print(f'Tempo médio por tarefa: {round(tempo_medio,2)} horas')
         print(f'Tempo total gasto: {round(tempo_total,2)} horas')
-        print('===================')
+        print('=========================')
 
     def plot_tarefas(self, by_status=True):
         os.makedirs('img', exist_ok=True)
@@ -211,7 +215,7 @@ class ListaTarefas:
 
         ax.set_title(f'Distribuição de Tarefas por {coluna.capitalize()}', fontsize=14)
         plt.savefig(f'img/tarefas-por-{coluna}.png')
-        return plt.show()
+        return fig
 
     def plot_progress(self):
         os.makedirs('img', exist_ok=True)
@@ -236,27 +240,68 @@ class ListaTarefas:
 
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
         plt.savefig('img/progresso.png')        
-        return plt.show()
+        return fig
     
-    def enviar_relatorio_por_email(self, arquivo):
+    def exibir_plot(self, fig):
+        if fig:
+            return fig.show()
+        else:
+            print('Não foi possível exibir um gráfico')
+
+    def enviar_relatorio_por_email(self):
         try: 
             load_dotenv()
+            tarefas_totais, tarefas_concluidas, tarefas_pendentes,progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
+
+            texto = f'''
+Olá, seu relatório de tarefas cehgou!\n
+Seu progresso neste projeto é de {round(progresso, 2)}%.\n
+O número total de tarefas é: {tarefas_totais}.\n
+Destas, {tarefas_concluidas} foram concluídas e {tarefas_pendentes} estão pendentes.\n
+O tempo médio em cada tarefa é {round(tempo_medio, 2)} horas e o tempo total executando as tarefas é de {round(tempo_total, 2)} horas.\n
+Seguem anexos os gráficos de estatísticas.
+'''
+
+            texto_html = f'''
+                <html>
+                    <body>
+                        <p>Olá, seu relatório de tarefas chegou!</p>
+                        <p>
+                            Seu progresso neste projeto é de {round(progresso, 2)}%.<br>
+                            O número total de tarefas é: {tarefas_totais}.<br>
+                            Destas, {tarefas_concluidas} foram concluídas e {tarefas_pendentes} estão pendentes.<br>
+                            O tempo médio em cada tarefa é {round(tempo_medio, 2)} horas e o tempo total executando as tarefas é de {round(tempo_total, 2)} horas.
+                        </p>
+                        <p>Seguem anexos os gráficos de estatísticas.</p>
+                    </body>
+                </html>
+                '''
 
             host = 'imap.gmail.com'
             usuario = os.getenv('EMAIL_USUARIO')
             senha = os.getenv('EMAIL_SENHA')
 
             msg = EmailMessage()
-            msg['Subject'] = 'Titulo'
+            msg['Subject'] = 'Relatório tarefas'
             msg['From'] = usuario
             msg['To'] = usuario
-            msg.set_content('Caixa de texto')
+            msg.set_content(texto)
+            msg.add_alternative(texto_html, subtype='html')
 
-            with open(arquivo, 'rb') as a:
-                arquivo = a.read()
-                arquivo_nome = a.name
+            self.plot_tarefas()
+            self.plot_tarefas(by_status=False)
+            self.plot_progress()
 
-            msg.add_attachment(arquivo, maintype='application', subtype='octet-stream', filename=arquivo_nome)
+            arquivos = [
+                os.path.join('img', 'tarefas-por-prioridade.png'),
+                os.path.join('img', 'tarefas-por-status.png'),
+                os.path.join('img', 'progresso.png')
+            ]
+            for arquivo in arquivos:
+                with open(arquivo, 'rb') as a:
+                    img = a.read()
+                    arquivo_nome = a.name
+                    msg.add_attachment(img, maintype='image', subtype='png', filename=arquivo_nome)
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                 smtp.login(usuario, senha)
@@ -393,19 +438,31 @@ def escolher_opcao():
                 voltar_ao_menu()
 
             case 9:
-                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.gerar_estatisticas()
+                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.exibir_estatisticas()
                 voltar_ao_menu()
 
             case 10:
-                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_tarefas(by_status=False)
+                if lista_tarefas.tarefas.empty:
+                    print('Nenhuma tarefa cadastrada.')   
+                else:
+                    fig = lista_tarefas.plot_tarefas(by_status=False)
+                    lista_tarefas.exibir_plot(fig)
                 voltar_ao_menu()
 
             case 11:
-                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_tarefas(by_status=True)
+                if lista_tarefas.tarefas.empty:
+                    print('Nenhuma tarefa cadastrada.')   
+                else:
+                    fig = lista_tarefas.plot_tarefas(by_status=True)
+                    lista_tarefas.exibir_plot(fig)
                 voltar_ao_menu()
 
             case 12:
-                print('Nenhuma tarefa cadastrada.') if lista_tarefas.tarefas.empty else lista_tarefas.plot_progress()
+                if lista_tarefas.tarefas.empty:
+                    print('Nenhuma tarefa cadastrada.')   
+                else:
+                    fig = lista_tarefas.plot_progress()
+                    lista_tarefas.exibir_plot(fig)
                 voltar_ao_menu()
 
             case 13:
