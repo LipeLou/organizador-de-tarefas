@@ -263,19 +263,22 @@ Seguem anexos os gráficos de estatísticas.
 '''
 
             texto_html = f'''
-                <html>
-                    <body>
-                        <p>Olá, seu relatório de tarefas chegou!</p>
-                        <p>
-                            Seu progresso neste projeto é de {round(progresso, 2)}%.<br>
-                            O número total de tarefas é: {tarefas_totais}.<br>
-                            Destas, {tarefas_concluidas} foram concluídas e {tarefas_pendentes} estão pendentes.<br>
-                            O tempo médio em cada tarefa é {round(tempo_medio, 2)} horas e o tempo total executando as tarefas é de {round(tempo_total, 2)} horas.
+                    <html>
+                    <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333333; padding: 20px;">
+                        <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 8px; padding: 20px;">
+                        <h2 style="color: #2c3e50;">Relatório de Tarefas</h2>
+                        <p style="font-size: 16px;">Olá, seu relatório de tarefas chegou!</p>
+                        <p style="font-size: 16px; line-height: 1.6;">
+                            Seu progresso neste projeto é de <strong>{round(progresso, 2)}%</strong>.<br>
+                            O número total de tarefas é: <strong>{tarefas_totais}</strong>.<br>
+                            Destas, <strong>{tarefas_concluidas}</strong> foram concluídas e <strong>{tarefas_pendentes}</strong> estão pendentes.<br>
+                            O tempo médio em cada tarefa é <strong>{round(tempo_medio, 2)} horas</strong> e o tempo total executando as tarefas é de <strong>{round(tempo_total, 2)} horas</strong>.
                         </p>
-                        <p>Seguem anexos os gráficos de estatísticas.</p>
+                        <p style="font-size: 16px;">Seguem anexos os gráficos de estatísticas.</p>
+                        </div>
                     </body>
-                </html>
-                '''
+                    </html>
+                    '''
 
             host = 'imap.gmail.com'
             usuario = os.getenv('EMAIL_USUARIO')
