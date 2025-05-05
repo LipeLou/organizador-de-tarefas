@@ -164,26 +164,29 @@ Seguem anexos os gráficos de estatísticas.
             print('Erro ao enviar email:', e)
 ~~~
 
-**👁‍🗨 Obeservações: **
+**👁‍🗨 Obeservações:**
 - Novaa funções:
     - ~~~python
-          def exibir_plot(self, fig):
-        if fig:
+      def exibir_plot(self, fig):
+          if fig:
             return fig.show()
+          else:
+            print('Não foi possível exibir um gráfico')
       ~~~
-
-      - ~~~python
-        def exibir_estatisticas(self):
-            tarefas_totais, numero_tarefas_concluidas, tarefas_pendentes, progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
-            print('======Estatísticas=======')
-            print(f'Tarefas Totais: {tarefas_totais}')
-            print(f'Tarefas Concluídas: {numero_tarefas_concluidas}')
-            print(f'Tarefas Pendentes: {tarefas_pendentes}')
-            print(f'Progresso: {round(progresso,2)}%')
-            print(f'Tempo médio por tarefa: {round(tempo_medio,2)} horas')
-            print(f'Tempo total gasto: {round(tempo_total,2)} horas')
-            print('=========================')
-      ~~~
+      
+    - ~~~python
+       def exibir_estatisticas(self):
+          tarefas_totais, numero_tarefas_concluidas, tarefas_pendentes, progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
+          print('======Estatísticas=======')
+          print(f'Tarefas Totais: {tarefas_totais}')
+          print(f'Tarefas Concluídas: {numero_tarefas_concluidas}')
+          print(f'Tarefas Pendentes: {tarefas_pendentes}')
+          print(f'Progresso: {round(progresso,2)}%')
+          print(f'Tempo médio por tarefa: {round(tempo_medio,2)} horas')
+          print(f'Tempo total gasto: {round(tempo_total,2)} horas')
+          print('=========================')
+        ~~~
+      
 - Funções alteradas:
     - `plot_progress`
     - `plot_tarefas`
