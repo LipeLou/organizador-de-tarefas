@@ -262,8 +262,6 @@ class ListaTarefas:
         except:
             print('Erro! Tente novamente.')
 
-        voltar_ao_menu()
-
 
 def voltar_ao_menu():
     input('\nDigite algo para voltar ao menu. ')
