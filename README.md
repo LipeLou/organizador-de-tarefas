@@ -95,7 +95,7 @@ Essa funcionalidade melhora a praticidade do projeto ao facilitar o compartilham
 **🔧 Funçoes adicionas:**
 
 enviar_relatorio_por_email()
-~~~
+~~~python
     def enviar_relatorio_por_email(self, destinatario=None):
         try: 
             load_dotenv()
