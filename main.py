@@ -103,15 +103,15 @@ class ListaTarefas:
         if not alta.empty:
             print('=== Prioridade Alta ====')
             for idx, row in alta.iterrows():
-                print(f'{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}')
+                print(f"{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}")
         if not media.empty:
             print('=== Prioridade Média ====')
             for idx, row in media.iterrows():
-                print(f'{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}')
+                print(f"{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}")
         if not baixa.empty:
             print('=== Prioridade Baixa ====')
             for idx, row in baixa.iterrows():
-                print(f'{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}')
+                print(f"{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}")
 
     def exibir_tarefas_por_status(self):
         nao_iniciado = self.tarefas.loc[self.tarefas['status']=='Não iniciada']
@@ -121,15 +121,15 @@ class ListaTarefas:
         if not nao_iniciado.empty:
             print('=== Não Iniciadas ====')
             for idx, row in nao_iniciado.iterrows():
-                print(f'{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}')
+                print(f"{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}")
         if not iniciado.empty:
             print('=== Em andamento ====')
             for idx, row in iniciado.iterrows():
-                print(f'{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}')
+                print(f"{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}")
         if not concluido.empty:
             print('=== Concluídas ====')
             for idx, row in concluido.iterrows():
-                print(f'{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}')
+                print(f"{row['nome']} | Prioridade: {row['prioridade']} | Prazo: {row['prazo']} | Status: {row['status']}")
 
     def remover_tarefa(self, nome_tarefa):
         if not nome_tarefa in list(self.tarefas['nome']):
@@ -189,6 +189,8 @@ class ListaTarefas:
         print('===================')
 
     def plot_tarefas(self, by_status=True):
+        os.makedirs('img', exist_ok=True)
+
         coluna = 'status' if by_status else 'prioridade'
         dados = self.tarefas.groupby(coluna)['nome'].count()
 
@@ -208,10 +210,12 @@ class ListaTarefas:
             autotext.set_fontsize(10)
 
         ax.set_title(f'Distribuição de Tarefas por {coluna.capitalize()}', fontsize=14)
-        plt.savefig(f'tarefas-por-{coluna}.png')
+        plt.savefig(f'img/tarefas-por-{coluna}.png')
         return plt.show()
 
     def plot_progress(self):
+        os.makedirs('img', exist_ok=True)
+
         total = self.tarefas.shape[0]
         concluidas = self.tarefas[self.tarefas['status'] == 'Concluída'].shape[0]
         p_concluidas = (concluidas / total) * 100
@@ -231,7 +235,7 @@ class ListaTarefas:
             spine.set_visible(False)
 
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-        plt.savefig('progresso.png')
+        plt.savefig('img/progresso.png')        
         return plt.show()
     
     def enviar_relatorio_por_email(self, arquivo):
