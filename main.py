@@ -248,7 +248,7 @@ class ListaTarefas:
         else:
             print('Não foi possível exibir um gráfico')
 
-    def enviar_relatorio_por_email(self):
+    def enviar_relatorio_por_email(self, destinatario=None):
         try: 
             load_dotenv()
             tarefas_totais, tarefas_concluidas, tarefas_pendentes,progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
@@ -287,7 +287,8 @@ Seguem anexos os gráficos de estatísticas.
             msg = EmailMessage()
             msg['Subject'] = 'Relatório tarefas'
             msg['From'] = usuario
-            msg['To'] = usuario
+            msg['To'] = destinatario if destinatario else usuario
+                
             msg.set_content(texto)
             msg.add_alternative(texto_html, subtype='html')
 
@@ -310,7 +311,7 @@ Seguem anexos os gráficos de estatísticas.
                 smtp.login(usuario, senha)
                 smtp.send_message(msg)
 
-            print('Email enviado com sucesso!')
+            print(f'Email enviado com sucesso para {destinatario}') if destinatario else print('Email enviado com sucesso!')
         except Exception as e:
             print('Erro ao enviar email:', e)
 
@@ -469,7 +470,10 @@ def escolher_opcao():
                 voltar_ao_menu()
 
             case 13:
-                lista_tarefas.enviar_relatorio_por_email()
+                print('Para outro (exemplo@email.com) | Para você (deixe em branco)')
+                destinatario = input('Para quem deseja enviar: ')
+                limpar_terminal()
+                lista_tarefas.enviar_relatorio_por_email(destinatario)
                 voltar_ao_menu()
 
             case 14:
