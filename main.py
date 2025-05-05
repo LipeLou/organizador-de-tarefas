@@ -234,7 +234,7 @@ class ListaTarefas:
         plt.savefig('progresso.png')
         return plt.show()
     
-    def enviar_email(self):
+    def enviar_relatorio_por_email(self, arquivo):
         try: 
             load_dotenv()
 
@@ -245,10 +245,10 @@ class ListaTarefas:
             msg = EmailMessage()
             msg['Subject'] = 'Titulo'
             msg['From'] = usuario
-            msg['To'] = 'ffelipeloureiro@gmail.com'
-            msg.set_content('Email teste de função')
+            msg['To'] = usuario
+            msg.set_content('Caixa de texto')
 
-            with open('tarefas-por-prioridade.png', 'rb') as a:
+            with open(arquivo, 'rb') as a:
                 arquivo = a.read()
                 arquivo_nome = a.name
 
@@ -405,7 +405,7 @@ def escolher_opcao():
                 voltar_ao_menu()
 
             case 13:
-                lista_tarefas.enviar_email()
+                lista_tarefas.enviar_relatorio_por_email()
                 voltar_ao_menu()
 
             case 14:
