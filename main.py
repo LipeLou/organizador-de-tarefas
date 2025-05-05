@@ -2,6 +2,10 @@ from datetime import datetime, timedelta
 import pandas as pd
 import os
 from matplotlib import pyplot as plt
+import smtplib
+from email.message import EmailMessage
+from dotenv import load_dotenv
+
 
 class Tarefa:
     def __init__(self, nome, prioridade, prazo):
@@ -229,7 +233,36 @@ class ListaTarefas:
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
         plt.savefig('progresso.png')
         return plt.show()
+    
+    def enviar_email(self):
+        try: 
+            load_dotenv()
 
+            host = 'imap.gmail.com'
+            usuario = os.getenv('EMAIL_USUARIO')
+            senha = os.getenv('EMAIL_SENHA')
+
+            msg = EmailMessage()
+            msg['Subject'] = 'Titulo'
+            msg['From'] = usuario
+            msg['To'] = 'ffelipeloureiro@gmail.com'
+            msg.set_content('Email teste de função')
+
+            with open('tarefas-por-prioridade.png', 'rb') as a:
+                arquivo = a.read()
+                arquivo_nome = a.name
+
+            msg.add_attachment(arquivo, maintype='application', subtype='octet-stream', filename=arquivo_nome)
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(usuario, senha)
+                smtp.send_message(msg)
+
+            print('Email enviado com sucesso!')
+        except:
+            print('Erro! Tente novamente.')
+
+        voltar_ao_menu()
 
 
 def voltar_ao_menu():
