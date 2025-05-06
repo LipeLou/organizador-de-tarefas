@@ -191,4 +191,5 @@ Seguem anexos os gráficos de estatísticas.
     - `plot_progress`
     - `plot_tarefas`
     - `gerar_estatisticas`
- Alterações feitas
+
+**Alterações feitas: Agora retornam algo, em vez de imprimir.**
