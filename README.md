@@ -165,7 +165,7 @@ Seguem anexos os gráficos de estatísticas.
 ~~~
 
 **👁‍🗨 Obeservações:**
-- Novaa funções:
+- 🆕 Novas funções:
     - ~~~python
       def exibir_plot(self, fig):
           if fig:
@@ -187,7 +187,8 @@ Seguem anexos os gráficos de estatísticas.
           print('=========================')
         ~~~
       
-- Funções alteradas:
+- 📍 Funções alteradas:
     - `plot_progress`
     - `plot_tarefas`
     - `gerar_estatisticas`
+ Alterações feitas
