@@ -31,7 +31,6 @@ Isso facilita a análise visual do andamento e da organização das tarefas.
 plot_tarfeas()
 ~~~python
 def plot_tarefas(self, by_status=True):
-    os.makedirs('img', exist_ok=True)
 
     coluna = 'status' if by_status else 'prioridade'
     dados = self.tarefas.groupby(coluna)['nome'].count()
@@ -52,13 +51,12 @@ def plot_tarefas(self, by_status=True):
         autotext.set_fontsize(10)
 
     ax.set_title(f'Distribuição de Tarefas por {coluna.capitalize()}', fontsize=14)
-    plt.savefig(f'img/tarefas-por-{coluna}.png')
+    plt.savefig(f'tarefas-por-{coluna}.png')
     return plt.show()
 ~~~
 plot_progress()
 ~~~python
 def plot_progress(self):
-    os.makedirs('img', exist_ok=True)
 
     total = self.tarefas.shape[0]
     concluidas = self.tarefas[self.tarefas['status'] == 'Concluída'].shape[0]
@@ -79,7 +77,7 @@ def plot_progress(self):
         spine.set_visible(False)
 
     ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-    plt.savefig('img/progresso.png')
+    plt.savefig('progresso.png')
     return plt.show()
 ~~~
 
