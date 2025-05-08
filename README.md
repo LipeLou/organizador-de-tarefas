@@ -167,7 +167,7 @@ Seguem anexos os gráficos de estatísticas.
 ~~~
 
 **👁‍🗨 Obeservações:**
-- 🆕 Nova pasta:
+- 🆕 Novsa pastas:
     - `.gitignore`
     - `.env` : Armazenar **email** e **senha**
 
