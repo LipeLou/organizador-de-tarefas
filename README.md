@@ -167,6 +167,10 @@ Seguem anexos os gráficos de estatísticas.
 ~~~
 
 **👁‍🗨 Obeservações:**
+- 🆕 Nova pasta:
+    - `.gitignore`
+    - `.env` : Armazenar **email** e **senha**
+
 - 🆕 Novas funções:
     - ~~~python
       def exibir_plot(self, fig):
