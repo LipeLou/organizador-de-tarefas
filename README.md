@@ -1,7 +1,7 @@
 # Organizador de Tarefas
 
 ### ✅ Descrição breve do projeto
-Organizador de tarefas em **Python** com prioridade e status. Projeto simples voltado para fins didáticos, com o objetivo de aplicar conhecimentos que vou adquirindo. O projeto começa com apenas um programa utilizando conceitos fundamentais da programação orientada a objetos e manipulação de dados, porém tentarei cada vez mais tornar esse projeto "complexo", seja corrigindo erros, assim como trazendo novas funções.
+Organizador de tarefas em **Python** com prioridade e status. Projeto simples voltado para fins didáticos, com o objetivo de aplicar um pouco de cada conhecimento que vou adquirindo. O projeto começa com apenas um programa utilizando conceitos fundamentais da programação orientada a objetos e manipulação de dados, porém tentarei cada vez mais tornar esse projeto "complexo", seja corrigindo erros, assim como trazendo novas funções.
 A cada funcionalidade (conhecimentos) nova adicionada, informarei em formato de notas de atualização (patch notes). Entretanto, as modificações para corrigir possíveis erros ou melhora de design, apenas irei comenta-las nos commits. 
 
 ### ❓ Por que um organizador de tarefas?
