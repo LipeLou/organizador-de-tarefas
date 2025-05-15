@@ -253,8 +253,8 @@ gerar_descricao()
 🆕 Função adicionada **temporariamente** (Não está mais no código):
 
 🔧 Funcão criada dentro da classe `ListaTarefas()` apenas para adicionar descrição em todas as tarefas já existentes.
-❗ **Obejtivo:** Usar o próprio código para gerar descrições e atualizar o DataFrame, ao invés de mandar um modelo LLM fazer e apenas copiar e colar.
 
+🚩 Obejtivo: Usar um código para gerar descrições e atualizar o DataFrame, ao invés de mandar um modelo LLM fazer e apenas copiar e colar.
 ~~~python
 def descricoes(self):
         client = openai.Client()
