@@ -1,42 +1,42 @@
 ,nome,prioridade,prazo,status,descricao,data_criacao,horario_inicio,tempo_total,peso_prioridade,peso_status,peso_urgencia
-0,Estudar cálculo A,Alta,2025-05-20 00:00:00,Não iniciada,,2025-04-30 18:45:46,,,3.0,3.0,6.0
-1,Ir ao mercado,Média,2025-05-03 00:00:00,Concluída,,2025-04-30 18:46:21,2025-04-30 18:47:42.553269,0 days 02:22:07.141129,2.0,1.0,3.0
-2,Revisar código,Baixa,2025-05-15 00:00:00,Em andamento,,2025-04-30 18:48:59,2025-04-30 19:49:06.233195,,1.0,2.0,3.0
-3,Escrever relatório,Média,2025-05-10 00:00:00,Não iniciada,,2025-04-30 20:00:00,,,2.0,3.0,5.0
-4,Lavar roupas,Baixa,2025-05-01 00:00:00,Concluída,,2025-04-29 15:10:00,2025-04-29 16:00:00,0 days 01:30:00,1.0,1.0,2.0
-5,Praticar violão,Média,2025-05-05 00:00:00,Em andamento,,2025-04-30 18:55:00,2025-04-30 19:00:00,,2.0,2.0,4.0
-6,Organizar arquivos,Baixa,2025-05-12 00:00:00,Não iniciada,,2025-04-30 17:45:00,,,1.0,3.0,4.0
-7,Enviar e-mails,Alta,2025-05-01 00:00:00,Concluída,,2025-04-30 08:30:00,2025-04-30 08:45:00,0 days 00:45:00,3.0,1.0,4.0
-8,Planejar viagem,Alta,2025-06-01 00:00:00,Não iniciada,,2025-04-30 09:00:00,,,3.0,3.0,6.0
-9,Limpar cozinha,Média,2025-05-02 00:00:00,Concluída,,2025-04-29 20:00:00,2025-04-29 20:15:00,0 days 01:00:00,2.0,1.0,3.0
-10,Fazer exercício físico,Média,2025-05-04 00:00:00,Concluída,,2025-04-30 07:00:00,2025-04-30 07:10:00,0 days 00:50:00,2.0,1.0,3.0
-11,Atualizar currículo,Alta,2025-05-06 00:00:00,Não iniciada,,2025-04-30 18:00:00,,,3.0,3.0,6.0
-12,Desenhar projeto,Baixa,2025-05-22 00:00:00,Não iniciada,,2025-04-30 12:45:00,,,1.0,3.0,4.0
-13,Treinar digitação,Baixa,2025-05-11 00:00:00,Em andamento,,2025-04-30 10:10:00,2025-04-30 10:20:00,,1.0,2.0,3.0
-14,Assistir documentário,Média,2025-05-09 00:00:00,Concluída,,2025-04-29 21:00:00,2025-04-29 21:05:00,0 days 01:30:00,2.0,1.0,3.0
-15,Preparar aula,Alta,2025-05-08 00:00:00,Em andamento,,2025-04-30 16:00:00,2025-04-30 16:30:00,,3.0,2.0,5.0
-16,Montar portfólio,Média,2025-05-14 00:00:00,Não iniciada,,2025-04-30 18:40:00,,,2.0,3.0,5.0
-17,Testar aplicativo,Baixa,2025-05-16 00:00:00,Em andamento,,2025-04-30 14:00:00,2025-04-30 14:05:00,,1.0,2.0,3.0
-18,Estudar Python,Alta,2025-05-13 00:00:00,Concluída,,2025-04-29 19:00:00,2025-04-29 19:10:00,0 days 02:00:00,3.0,1.0,4.0
-19,Criar orçamento,Média,2025-05-10 00:00:00,Não iniciada,,2025-04-30 17:10:00,,,2.0,3.0,5.0
-20,Limpar quintal,Baixa,2025-05-06 00:00:00,Concluída,,2025-04-28 10:00:00,2025-04-28 10:15:00,0 days 01:15:00,1.0,1.0,2.0
-21,Editar vídeo,Alta,2025-05-18 00:00:00,Em andamento,,2025-04-30 13:00:00,2025-04-30 13:05:00,,3.0,2.0,5.0
-22,Ler livro,Baixa,2025-05-30 00:00:00,Não iniciada,,2025-04-30 11:30:00,,,1.0,3.0,4.0
-23,Fazer backup,Média,2025-05-05 00:00:00,Concluída,,2025-04-30 10:00:00,2025-04-30 10:10:00,0 days 00:20:00,2.0,1.0,3.0
-24,Estudar inglês,Alta,2025-05-17 00:00:00,Em andamento,,2025-04-30 17:00:00,2025-04-30 17:10:00,,3.0,2.0,5.0
-25,Pintar parede,Média,2025-05-08 00:00:00,Não iniciada,,2025-04-30 08:00:00,,,2.0,3.0,5.0
-26,Criar apresentação,Alta,2025-05-12 00:00:00,Não iniciada,,2025-04-30 09:30:00,,,3.0,3.0,6.0
-27,Consultar médico,Média,2025-05-04 00:00:00,Concluída,,2025-04-29 11:00:00,2025-04-29 11:15:00,0 days 00:45:00,2.0,1.0,3.0
-28,Atualizar site,Baixa,2025-05-19 00:00:00,Em andamento,,2025-04-30 15:00:00,2025-04-30 15:10:00,,1.0,2.0,3.0
-29,Enviar proposta de projeto,Alta,2025-05-01 00:00:00,Concluída,,2025-04-28 09:00:00,2025-04-28 09:10:00,0 days 01:00:00,3.0,1.0,4.0
-30,Limpar escritório,Média,2025-05-02 00:00:00,Concluída,,2025-04-29 17:00:00,2025-04-29 17:10:00,0 days 01:15:00,2.0,1.0,3.0
-31,Revisar apresentação,Baixa,2025-05-03 00:00:00,Concluída,,2025-04-30 07:30:00,2025-04-30 07:40:00,0 days 00:40:00,1.0,1.0,2.0
-32,Postar no blog,Média,2025-05-02 00:00:00,Concluída,,2025-04-28 18:00:00,2025-04-28 18:15:00,0 days 01:10:00,2.0,1.0,3.0
-33,Verificar finanças,Alta,2025-05-01 00:00:00,Concluída,,2025-04-29 13:00:00,2025-04-29 13:05:00,0 days 00:55:00,3.0,1.0,4.0
-34,Responder mensagens,Média,2025-05-03 00:00:00,Concluída,,2025-04-30 08:00:00,2025-04-30 08:10:00,0 days 00:30:00,2.0,1.0,3.0
-35,Fazer chamada de vídeo,Baixa,2025-05-04 00:00:00,Concluída,,2025-04-29 14:00:00,2025-04-29 14:10:00,0 days 01:00:00,1.0,1.0,2.0
-36,Salvar o mundo,Alta,2025-05-01 00:00:00,Não iniciada,,2025-05-02 19:21:56,,,3.0,3.0,6.0
-37,Estudar a biblioteca smtplib,Média,2025-05-10 00:00:00,Concluída,,2025-05-04 03:40:18,2025-05-04 03:42:28.220561,0 days 23:27:51.939158,2.0,1.0,3.0
-38,Estudar a biblioteca imbox,Média,2025-05-10 00:00:00,Concluída,,2025-05-04 03:40:49,2025-05-05 03:10:09.253405,0 days 00:00:17.891680,2.0,1.0,3.0
-39,Customizar envio de email,Média,2025-05-10 00:00:00,Em andamento,,2025-05-05 03:09:53,2025-05-05 03:10:37.783734,,2.0,2.0,4.0
-40,Lavar carro,Baixa,2025-05-20 00:00:00,Não iniciada,"Limpeza externa e interna do veículo, removendo sujeira e poeira para manter a higiene e conservação.",2025-05-15 00:08:18,,,1.0,3.0,4.0
+0,Estudar cálculo A,Alta,2025-05-20 00:00:00,Não iniciada,Revisar e praticar conceitos fundamentais de cálculo A para aprimorar compreensão e habilidades matemáticas.,2025-04-30 18:45:46,,,3.0,3.0,6.0
+1,Ir ao mercado,Média,2025-05-03 00:00:00,Concluída,Comprar mantimentos e produtos essenciais no mercado conforme lista de compras previamente elaborada.,2025-04-30 18:46:21,2025-04-30 18:47:42.553269,0 days 02:22:07.141129,2.0,1.0,3.0
+2,Revisar código,Baixa,2025-05-15 00:00:00,Em andamento,Analisar e corrigir possíveis erros no código de programação para garantir sua qualidade.,2025-04-30 18:48:59,2025-04-30 19:49:06.233195,,1.0,2.0,3.0
+3,Escrever relatório,Média,2025-05-10 00:00:00,Não iniciada,Elabore documento detalhado com análise e conclusões sobre determinado tema ou projeto.,2025-04-30 20:00:00,,,2.0,3.0,5.0
+4,Lavar roupas,Baixa,2025-05-01 00:00:00,Concluída,Realizar a lavagem de roupas conforme instruções de etiqueta e separação por cores.,2025-04-29 15:10:00,2025-04-29 16:00:00,0 days 01:30:00,1.0,1.0,2.0
+5,Praticar violão,Média,2025-05-05 00:00:00,Em andamento,"Dedique tempo diário para praticar acordes e ritmos no violão, aprimorando suas habilidades musicais.",2025-04-30 18:55:00,2025-04-30 19:00:00,,2.0,2.0,4.0
+6,Organizar arquivos,Baixa,2025-05-12 00:00:00,Não iniciada,Classifique e arrume documentos de acordo com critérios estabelecidos para facilitar a localização.,2025-04-30 17:45:00,,,1.0,3.0,4.0
+7,Enviar e-mails,Alta,2025-05-01 00:00:00,Concluída,Redigir e enviar mensagens eletrônicas conforme instruções e prazos estabelecidos.,2025-04-30 08:30:00,2025-04-30 08:45:00,0 days 00:45:00,3.0,1.0,4.0
+8,Planejar viagem,Alta,2025-06-01 00:00:00,Não iniciada,"Organizar itinerário, reservas e atividades para viagem de forma eficiente e prazerosa.",2025-04-30 09:00:00,,,3.0,3.0,6.0
+9,Limpar cozinha,Média,2025-05-02 00:00:00,Concluída,"Realizar a limpeza completa da cozinha, incluindo pia, bancadas, fogão e utensílios.",2025-04-29 20:00:00,2025-04-29 20:15:00,0 days 01:00:00,2.0,1.0,3.0
+10,Fazer exercício físico,Média,2025-05-04 00:00:00,Concluída,Realize atividades físicas para promover saúde e bem-estar.,2025-04-30 07:00:00,2025-04-30 07:10:00,0 days 00:50:00,2.0,1.0,3.0
+11,Atualizar currículo,Alta,2025-05-06 00:00:00,Não iniciada,Revisão e atualização do currículo profissional para refletir experiências e habilidades atuais.,2025-04-30 18:00:00,,,3.0,3.0,6.0
+12,Desenhar projeto,Baixa,2025-05-22 00:00:00,Não iniciada,Elabore esboço detalhado de projeto conforme especificações e requisitos estabelecidos.,2025-04-30 12:45:00,,,1.0,3.0,4.0
+13,Treinar digitação,Baixa,2025-05-11 00:00:00,Em andamento,Praticar exercícios para aprimorar habilidades de digitação e velocidade de escrita no teclado.,2025-04-30 10:10:00,2025-04-30 10:20:00,,1.0,2.0,3.0
+14,Assistir documentário,Média,2025-05-09 00:00:00,Concluída,Assista ao documentário selecionado para ampliar conhecimentos e insights sobre o tema abordado.,2025-04-29 21:00:00,2025-04-29 21:05:00,0 days 01:30:00,2.0,1.0,3.0
+15,Preparar aula,Alta,2025-05-08 00:00:00,Em andamento,Desenvolver conteúdo didático e materiais para a próxima aula a ser ministrada.,2025-04-30 16:00:00,2025-04-30 16:30:00,,3.0,2.0,5.0
+16,Montar portfólio,Média,2025-05-14 00:00:00,Não iniciada,Organize e compile seus melhores trabalhos em um portfólio profissional para apresentação.,2025-04-30 18:40:00,,,2.0,3.0,5.0
+17,Testar aplicativo,Baixa,2025-05-16 00:00:00,Em andamento,Realizar testes abrangentes no aplicativo para identificar e relatar possíveis problemas ou bugs.,2025-04-30 14:00:00,2025-04-30 14:05:00,,1.0,2.0,3.0
+18,Estudar Python,Alta,2025-05-13 00:00:00,Concluída,Estudo de programação em Python para aprimorar habilidades.,2025-04-29 19:00:00,2025-04-29 19:10:00,0 days 02:00:00,3.0,1.0,4.0
+19,Criar orçamento,Média,2025-05-10 00:00:00,Não iniciada,Elaborar documento detalhado com estimativas de custos para projeto ou atividade específica.,2025-04-30 17:10:00,,,2.0,3.0,5.0
+20,Limpar quintal,Baixa,2025-05-06 00:00:00,Concluída,"Realizar a limpeza completa do quintal, removendo folhas, galhos e detritos.",2025-04-28 10:00:00,2025-04-28 10:15:00,0 days 01:15:00,1.0,1.0,2.0
+21,Editar vídeo,Alta,2025-05-18 00:00:00,Em andamento,"Realize edição profissional de vídeo conforme requisitos estabelecidos, garantindo qualidade e impacto visual.",2025-04-30 13:00:00,2025-04-30 13:05:00,,3.0,2.0,5.0
+22,Ler livro,Baixa,2025-05-30 00:00:00,Não iniciada,Realize a leitura do livro conforme programado para absorver o conteúdo e informações relevantes.,2025-04-30 11:30:00,,,1.0,3.0,4.0
+23,Fazer backup,Média,2025-05-05 00:00:00,Concluída,Realize cópia de segurança dos arquivos importantes para prevenir perda de dados.,2025-04-30 10:00:00,2025-04-30 10:10:00,0 days 00:20:00,2.0,1.0,3.0
+24,Estudar inglês,Alta,2025-05-17 00:00:00,Em andamento,Dedique tempo diário para praticar habilidades de compreensão e comunicação na língua inglesa.,2025-04-30 17:00:00,2025-04-30 17:10:00,,3.0,2.0,5.0
+25,Pintar parede,Média,2025-05-08 00:00:00,Não iniciada,Aplicar tinta na parede conforme especificações de cor e acabamento.,2025-04-30 08:00:00,,,2.0,3.0,5.0
+26,Criar apresentação,Alta,2025-05-12 00:00:00,Não iniciada,Elaborar slides informativos e visualmente atrativos para apresentação em reunião corporativa.,2025-04-30 09:30:00,,,3.0,3.0,6.0
+27,Consultar médico,Média,2025-05-04 00:00:00,Concluída,Agendar consulta médica para avaliação e tratamento de saúde.,2025-04-29 11:00:00,2025-04-29 11:15:00,0 days 00:45:00,2.0,1.0,3.0
+28,Atualizar site,Baixa,2025-05-19 00:00:00,Em andamento,Realizar atualização completa do conteúdo e design do site de acordo com as diretrizes estabelecidas.,2025-04-30 15:00:00,2025-04-30 15:10:00,,1.0,2.0,3.0
+29,Enviar proposta de projeto,Alta,2025-05-01 00:00:00,Concluída,Elaborar e encaminhar proposta de projeto conforme requisitos estabelecidos.,2025-04-28 09:00:00,2025-04-28 09:10:00,0 days 01:00:00,3.0,1.0,4.0
+30,Limpar escritório,Média,2025-05-02 00:00:00,Concluída,"Realizar a limpeza completa do escritório, incluindo mesas, chão, banheiro e remoção de lixo.",2025-04-29 17:00:00,2025-04-29 17:10:00,0 days 01:15:00,2.0,1.0,3.0
+31,Revisar apresentação,Baixa,2025-05-03 00:00:00,Concluída,"Analisar e corrigir conteúdo, design e formatação da apresentação para garantir qualidade e precisão.",2025-04-30 07:30:00,2025-04-30 07:40:00,0 days 00:40:00,1.0,1.0,2.0
+32,Postar no blog,Média,2025-05-02 00:00:00,Concluída,Escrever e publicar conteúdo relevante no blog conforme calendário editorial estabelecido.,2025-04-28 18:00:00,2025-04-28 18:15:00,0 days 01:10:00,2.0,1.0,3.0
+33,Verificar finanças,Alta,2025-05-01 00:00:00,Concluída,Analisar registros financeiros para garantir precisão e saúde financeira da empresa.,2025-04-29 13:00:00,2025-04-29 13:05:00,0 days 00:55:00,3.0,1.0,4.0
+34,Responder mensagens,Média,2025-05-03 00:00:00,Concluída,Responder mensagens recebidas em todos os canais de comunicação de forma ágil e eficiente.,2025-04-30 08:00:00,2025-04-30 08:10:00,0 days 00:30:00,2.0,1.0,3.0
+35,Fazer chamada de vídeo,Baixa,2025-05-04 00:00:00,Concluída,Realize uma videochamada conforme agendado para comunicação eficaz e interativa.,2025-04-29 14:00:00,2025-04-29 14:10:00,0 days 01:00:00,1.0,1.0,2.0
+36,Salvar o mundo,Alta,2025-05-01 00:00:00,Não iniciada,Executar ações para preservar a humanidade e o planeta Terra.,2025-05-02 19:21:56,,,3.0,3.0,6.0
+37,Estudar a biblioteca smtplib,Média,2025-05-10 00:00:00,Concluída,Estudo da biblioteca smtplib para envio de e-mails de forma programática.,2025-05-04 03:40:18,2025-05-04 03:42:28.220561,0 days 23:27:51.939158,2.0,1.0,3.0
+38,Estudar a biblioteca imbox,Média,2025-05-10 00:00:00,Concluída,Pesquisar e estudar funcionalidades da biblioteca imbox para integração de e-mails.,2025-05-04 03:40:49,2025-05-05 03:10:09.253405,0 days 00:00:17.891680,2.0,1.0,3.0
+39,Customizar envio de email,Média,2025-05-10 00:00:00,Em andamento,Personalize o conteúdo e design de emails para comunicação mais eficaz e impactante.,2025-05-05 03:09:53,2025-05-05 03:10:37.783734,,2.0,2.0,4.0
+40,Lavar carro,Baixa,2025-05-20 00:00:00,Não iniciada,"Realizar a limpeza externa e interna do veículo, removendo sujeiras e garantindo sua higienização.",2025-05-15 00:08:18,,,1.0,3.0,4.0

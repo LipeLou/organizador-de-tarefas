@@ -540,7 +540,5 @@ def menu():
     escolher_opcao()
 
 
-
-
 if __name__ == '__main__':
     menu()
