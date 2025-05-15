@@ -5,7 +5,10 @@ from matplotlib import pyplot as plt
 import smtplib
 from email.message import EmailMessage
 from dotenv import load_dotenv
+import openai
 
+
+load_dotenv()
 
 class Tarefa:
     def __init__(self, nome, prioridade, prazo):
@@ -16,6 +19,7 @@ class Tarefa:
         self.data_criacao = datetime.now()
         self.horario_inicio = None
         self.tempo_total = None
+        self.descricao = self.gerar_descricao()
 
     def iniciar(self):
         if self.status == 'Não iniciada' and self.horario_inicio is None:
@@ -48,10 +52,37 @@ class Tarefa:
             'prioridade': self.prioridade,
             'prazo': self.prazo,
             'status': self.status,
+            'descricao': self.descricao,
             'data_criacao': self.data_criacao.strftime('%Y-%m-%d %H:%M:%S'),
             'horario_inicio': self.horario_inicio,
             'tempo_total': self.tempo_total
         }])
+
+    def gerar_descricao(self):
+        client = openai.Client()
+        system_prompt = '''
+            Você é um assistente de produtividade atuando como gestor de tarefas. Sua principal função é interpretar títulos de tarefas 
+            e gerar descrições completas, claras e objetivas, que ajudem qualquer pessoa a entender rapidamente o que precisa ser feito.
+            Seja conciso, mas completo.
+
+            Instruções:
+            Evite repetições do título na descrição;
+            Use bullet points se necessário para organizar entregáveis ou etapas;
+            Escreva sempre com clareza e profissionalismo.
+        '''
+        prompt = f'Crie uma descrição para a tarefa: {self.nome}'
+        
+        descricao = client.chat.completions.create(
+            messages=[
+                {'role' : 'system', 'content' : system_prompt},
+                {'role' : 'user', 'content' : prompt}],
+            model='gpt-3.5-turbo-0125',
+            max_tokens=200,
+            temperature=0,
+        )
+
+        descricao_resposta = descricao.choices[0].message.content
+        return descricao_resposta
 
     def __str__(self):
         return f'{self.nome} | Prioridade: {self.prioridade} | Prazo: {self.prazo} | Status: {self.status}'
@@ -62,7 +93,7 @@ class ListaTarefas:
         if os.path.exists('tarefas.csv'):
             self.tarefas = pd.read_csv('tarefas.csv', index_col=0)
         else:
-            self.tarefas = pd.DataFrame(columns=['nome', 'prioridade', 'prazo', 'status', 'data_criacao', 'horario_inicio', 'tempo_total'])
+            self.tarefas = pd.DataFrame(columns=['nome', 'prioridade', 'prazo', 'status', 'descricao', 'data_criacao', 'horario_inicio', 'tempo_total'])
 
     def adicionar_tarefa(self, tarefa):
         self.tarefas = pd.concat([self.tarefas, tarefa.to_df()], ignore_index=True)
@@ -250,7 +281,6 @@ class ListaTarefas:
 
     def enviar_relatorio_por_email(self, destinatario=None):
         try: 
-            load_dotenv()
             tarefas_totais, tarefas_concluidas, tarefas_pendentes,progresso, tempo_medio, tempo_total = self.gerar_estatisticas()
 
             texto = f'''
