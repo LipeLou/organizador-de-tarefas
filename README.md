@@ -250,9 +250,10 @@ gerar_descricao()
 
 **👁‍🗨 Obeservações:**
 
-🆕 Função adicionada **temporariamente**:
+🆕 Função adicionada **temporariamente** (Não está mais no código):
 
-🔧 Funcão criada dentro da classe `ListaTarefas()` para adicionar descrição em todas as tarefas já existentes
+🔧 Funcão criada dentro da classe `ListaTarefas()` apenas para adicionar descrição em todas as tarefas já existentes.
+❗ **Obejtivo:** Usar o próprio código para gerar descrições e atualizar o DataFrame, ao invés de mandar um modelo LLM fazer e apenas copiar e colar.
 
 ~~~python
 def descricoes(self):
