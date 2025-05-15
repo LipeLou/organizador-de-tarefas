@@ -199,3 +199,44 @@ Seguem anexos os gráficos de estatísticas.
     - `gerar_estatisticas`
 
 **Alterações feitas: Agora retornam algo, em vez de imprimir.**
+
+## 3. 🤖 OpenAI
+
+**🆕 Função adicionada:** Criação automática de descrições para tarefas
+**🧠 Conhecimentos aplicados:**
+- Integração com a API da `OpenAI`
+- Engenharia de prompt para modelos de linguagem
+
+**🔍 Descrição breve:**
+Foi implementada uma função que utiliza o modelo GPT-3.5-turbo para gerar descrições claras e objetivas com base no título da tarefa. Essa funcionalidade ajuda a padronizar e acelerar o preenchimento das tarefas, melhorando a organização e a compreensão do que precisa ser feito.
+
+**🔧 Funções adicionadas:**
+
+gerar_descricao()
+~~~python
+    def gerar_descricao(self):
+        client = openai.Client()
+        system_prompt = '''
+            Você é um assistente de produtividade atuando como gestor de tarefas. Sua principal função é interpretar títulos de tarefas 
+            e gerar descrições completas, claras e objetivas, que ajudem qualquer pessoa a entender rapidamente o que precisa ser feito.
+            Seja conciso, mas completo.
+
+            Instruções:
+            Evite repetições do título na descrição;
+            Escreva sempre com clareza e profissionalismo.
+            Escreva a descrição com no máximo 15 palavras
+        '''
+        prompt = f'Crie uma descrição para a tarefa: {self.nome}'
+        
+        descricao = client.chat.completions.create(
+            messages=[
+                {'role' : 'system', 'content' : system_prompt},
+                {'role' : 'user', 'content' : prompt}],
+            model='gpt-3.5-turbo-0125',
+            max_tokens=200,
+            temperature=0,
+        )
+
+        descricao_resposta = descricao.choices[0].message.content
+        return descricao_resposta
+~~~
