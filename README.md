@@ -1,4 +1,4 @@
-# Organizador de Tarefas
+# Sistema de Gerenciamento de Tarefas
 
 ### ✅ Descrição breve do projeto
 Organizador de tarefas em **Python** com prioridade e status. Projeto simples voltado para fins didáticos, com o objetivo de aplicar um pouco de cada conhecimento que vou adquirindo. O projeto começa com apenas um programa utilizando conceitos fundamentais da programação orientada a objetos e manipulação de dados, porém tentarei cada vez mais tornar esse projeto "complexo", seja corrigindo erros, assim como trazendo novas funções.
