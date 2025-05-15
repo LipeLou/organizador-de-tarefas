@@ -67,8 +67,8 @@ class Tarefa:
 
             Instruções:
             Evite repetições do título na descrição;
-            Use bullet points se necessário para organizar entregáveis ou etapas;
             Escreva sempre com clareza e profissionalismo.
+            Escreva a descrição com no máximo 15 palavras
         '''
         prompt = f'Crie uma descrição para a tarefa: {self.nome}'
         
