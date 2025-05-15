@@ -16,17 +16,18 @@ Então essa parte de **Atualizações**, será onde colocarei em ordem as novas 
 
 ## 1. 📊 Gráficos 
 
-#### **🆕 Função adicionada:** Visualização gráfica de tarefas  
-#### **🧠 Conhecimentos aplicados:**  
+**🆕 Função adicionada:** Visualização gráfica de tarefas  
+
+**🧠 Conhecimentos aplicados:**  
 - Manipulação de dados com `pandas`  
 - Geração e customização de gráficos com `matplotlib`  
 - Salvamento de imagens com `plt.savefig()`  
 
-#### **🔍 Descrição breve:**  
+**🔍 Descrição breve:**  
 Foram implementadas duas funções para visualizar as tarefas em gráficos: uma exibe a distribuição por status ou prioridade em gráfico de pizza, e a outra mostra o progresso geral em gráfico de barra horizontal. 
 Isso facilita a análise visual do andamento e da organização das tarefas.
 
-##### **🔧 Funçoes adicionas:**
+**🔧 Funçoes adicionas:**
 
 plot_tarfeas()
 ~~~python
@@ -84,17 +85,18 @@ def plot_progress(self):
 
 ## 2. 📩 Relatórios
 
-#### **🆕 Função adicionada:** Envio de relatórios por e-mail  
-#### **🧠 Conhecimentos aplicados:**  
+**🆕 Função adicionada:** Envio de relatórios por e-mail  
+
+**🧠 Conhecimentos aplicados:**  
 - Envio de e-mails com `smtplib` e `email.message`  
 - Leitura de variáveis de ambiente com `dotenv`  
 - Manipulação de arquivos binários para anexos  
 
-#### **🔍 Descrição breve:**  
+**🔍 Descrição breve:**  
 Foi implementada uma função que permite o envio de arquivos de relatório por e-mail de forma automatizada e segura. 
 Essa funcionalidade melhora a praticidade do projeto ao facilitar o compartilhamento dos resultados e gráficos gerados.
 
-##### **🔧 Funçoes adicionas:**
+**🔧 Funçoes adicionas:**
 
 enviar_relatorio_por_email()
 ~~~python
@@ -166,7 +168,9 @@ Seguem anexos os gráficos de estatísticas.
             print('Erro ao enviar email:', e)
 ~~~
 
-###### **👁‍🗨 Obeservações:**
+
+**👁‍🗨 Obeservações:**
+
 - 🆕 Novsa pastas:
     - `.gitignore`
     - `.env` : Armazenar **email** e **senha**
@@ -192,6 +196,7 @@ Seguem anexos os gráficos de estatísticas.
           print(f'Tempo total gasto: {round(tempo_total,2)} horas')
           print('=========================')
         ~~~
+
       
 - 📍 Funções alteradas:
     - `plot_progress`
@@ -200,9 +205,11 @@ Seguem anexos os gráficos de estatísticas.
 
 **Alterações feitas: Agora retornam algo, em vez de imprimir.**
 
+
 ## 3. 🤖 OpenAI
 
 **🆕 Função adicionada:** Criação automática de descrições para tarefas
+
 **🧠 Conhecimentos aplicados:**
 - Integração com a API da `OpenAI`
 - Engenharia de prompt para modelos de linguagem
@@ -241,10 +248,12 @@ gerar_descricao()
         return descricao_resposta
 ~~~
 
-#### **👁‍🗨 Obeservações:**
+**👁‍🗨 Obeservações:**
 
 🆕 Função adicionada **temporariamente**:
+
 🔧 Funcão criada dentro da classe `ListaTarefas()` para adicionar descrição em todas as tarefas já existentes
+
 ~~~python
 def descricoes(self):
         client = openai.Client()
