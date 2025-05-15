@@ -252,7 +252,11 @@ gerar_descricao()
 
 - 🆕 Pasta alterada:
     - `.env` : Armazenar **OPENAI_API_KEY**
-  
+
+- 🆕 Função alterada:
+    - `__init__` : alterada nas duas classes (`Tarefa` e `ListaTarefas`)
+        - Adicionando descrição na Tarefa e no DataFrame.
+
 - 🆕 Função adicionada **temporariamente** (Não está mais no código):
 
     - 🔧 Funcão criada dentro da classe `ListaTarefas()` apenas para adicionar descrição em todas as tarefas já existentes.
