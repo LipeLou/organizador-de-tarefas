@@ -12,9 +12,39 @@ def main():
     
     lista = ListaTarefas()
 
-    # Sidebar para Menu
+    # Sidebar para Menu e Funcionalidades Extras
+    st.sidebar.title("Menu")
     menu = ["Dashboard", "Minhas Tarefas", "Nova Tarefa"]
-    choice = st.sidebar.selectbox("Menu", menu)
+    choice = st.sidebar.selectbox("Navegação", menu)
+
+    st.sidebar.divider()
+    
+    # Download CSV
+    st.sidebar.header("📂 Dados")
+    if not lista.tarefas.empty:
+        csv = lista.tarefas.to_csv(index=False).encode('utf-8')
+        st.sidebar.download_button(
+            label="Baixar Tarefas (CSV)",
+            data=csv,
+            file_name='tarefas.csv',
+            mime='text/csv',
+        )
+    
+    st.sidebar.divider()
+
+    # Envio de Relatório
+    st.sidebar.header("📧 Relatório")
+    with st.sidebar.form("form_email"):
+        destinatario = st.text_input("Email do destinatário", placeholder="seu@email.com")
+        enviar_btn = st.form_submit_button("Enviar Relatório")
+        
+        if enviar_btn:
+            if destinatario:
+                with st.spinner('Gerando e enviando relatório...'):
+                    lista.enviar_relatorio_por_email(destinatario)
+                st.success("Relatório enviado!")
+            else:
+                st.warning("Por favor, digite um email.")
 
     if choice == "Dashboard":
         st.header("📊 Dashboard")
@@ -125,4 +155,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
