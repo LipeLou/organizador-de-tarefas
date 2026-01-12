@@ -291,3 +291,41 @@ def descricoes(self):
             descricao_resposta = descricao.choices[0].message.content
             self.tarefas.at[idx, 'descricao'] = descricao_resposta
 ~~~
+
+## 4. 🌐 Interface Web & Modularização
+
+**🆕 Função adicionada:** Interface web com Streamlit e modularização do código
+
+**🧠 Conhecimentos aplicados:**
+- Criação de dashboards interativos com `Streamlit`
+- Reestruturação de código em módulos (`src/`) para melhor organização e manutenibilidade
+- Exportação de dados para CSV via interface web
+
+**🔍 Descrição breve:**
+O projeto evoluiu para uma aplicação web completa. Agora é possível visualizar estatísticas, gráficos e gerenciar tarefas através de um dashboard interativo no navegador. Além disso, o código foi separado em módulos para facilitar a manutenção e escalabilidade.
+
+**🔧 Estrutura do projeto:**
+~~~text
+/
+├── app.py           # Interface Web (Streamlit)
+├── main.py          # Interface CLI (Legado)
+├── src/             # Módulos do Sistema
+│   ├── tarefa.py
+│   ├── lista_tarefas.py
+│   ├── ai_service.py
+│   ├── email_service.py
+│   └── plot_service.py
+└── ...
+~~~
+
+**👁‍🗨 Obeservações:**
+
+- 🆕 Ferramentas na interface web:
+    - **Dashboard Interativo:** Visualização de métricas e gráficos em tempo real.
+    - **Gestão de Tarefas:** Adicionar, iniciar, concluir e remover tarefas via cliques.
+    - **Download de Dados:** Botão para baixar todas as tarefas em formato CSV.
+    - **Relatórios:** Envio facilitado de relatórios por e-mail diretamente da barra lateral.
+
+- 🆕 Como executar:
+    - Interface Web: `streamlit run app.py`
+    - Interface Terminal: `python main.py`
